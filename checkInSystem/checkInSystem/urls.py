@@ -21,8 +21,8 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^verify/', include("verify.urls",namespace='verify')),
-    url(r'^',include("API.urls",namespace='API')),
+    url(r'^', include("verify.urls",namespace='verify')),
+    #url(r'^',include("API.urls",namespace='API')),
 	url(r'^pastForm',include("pastForm.urls",namespace='pastForm')),    
     #url(r'^posts/$', "<appname>.views.<function_name>)",
 ]

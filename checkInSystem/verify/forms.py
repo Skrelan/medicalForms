@@ -9,3 +9,7 @@ class VerifyForm(forms.ModelForm):
 			"name",
 			"dob"
 		]
+class PastFormForm(forms.ModelForm):
+	class Meta:
+		model = Verify
+		fields = [ "ssn","appointment","allergies","pastMedication","sex","sign"]		
