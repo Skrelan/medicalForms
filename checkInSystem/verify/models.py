@@ -10,11 +10,15 @@ def get_image_path(instance, filename):
 
 class Verify(models.Model):
 	image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
-	name = models.CharField(max_length=120)
+	fist_name = models.CharField(max_length=120)
+	last_name = models.CharField(max_length=120)
 	dob = models.DateField(auto_now=False, auto_now_add=False)
+	email = models.CharField(max_length=180)
+	uid = models.DecimalField(max_digits=10,decimal_places=0)
 	Male = 'M'
 	Female = 'F'
 	Other = 'O'
+	name = models.CharField(max_length=120)
 	gender_choices = ((Male,'Male'),
 		(Female,'Female'),
 		(Other,'Other'),
@@ -24,7 +28,6 @@ class Verify(models.Model):
 	allergies = models.CharField(max_length = 180) 
 	pastMedication = models.CharField(max_length = 180)
 	sex = models.CharField(max_length=2,choices=gender_choices,default=Male)
-	sign =  models.CharField(max_length=120) 
-	#image = models.ImageField(upload_to=get_image_path,blank=True,null=True)
+	sign =  models.CharField(max_length=120)
 	def __unicode__(self):
-		return self.name
+		return self.last_name

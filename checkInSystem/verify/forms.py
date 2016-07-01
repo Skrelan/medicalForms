@@ -6,10 +6,11 @@ class VerifyForm(forms.ModelForm):
 	class Meta:
 		model = Verify
 		fields = [
-			"name",
+			"first_name",
+			"last_name",
 			"dob"
 		]
 class PastFormForm(forms.ModelForm):
 	class Meta:
 		model = Verify
-		fields = [ "ssn","appointment","allergies","pastMedication","sex","sign"]		
+		fields = [ "email","uid","appointment"]		
