@@ -75,31 +75,46 @@ def play_with_api(request):
 		patients_url = data['next'] # A JSON null on the last page
 		string = string + "<li>"+str(patients[0])+"</li>"
 		i = i + 1
-	# context = {
-	# 			"patients" : patients
-	# }
-
-	string = string + "</ul>"
-	for patient in patients:
-		flag = True 
-		#if ((patient.updated_at > .updated_at ) & (len(Verify.objects.filter(uid=patient.id))>0)) | (len(Verify.objects.filter(uid=patient.id))==0)
-		if (len(Verify.objects.filter(uid=patient.id))>0):
-			if (patient.updated_at <= Verify.objects.filter(uid=patient.id).updated_at ):
-				flag = False
-		if flag:
-			instance =  Verify()
-			instance.uid = patient.id
-			instance.first_name = patient.first_name
-			instance.last_name = patient.last_name
-			instance.dob = patient.date_of_birth
-			instance.email = patient.email
-			#instace.sex = patient.sex
-			instace.appointment = patient.date_of_last_appointment
-			instance.save()
-
-
-	instance = Verify.objects.all()
 	context = {
-	 			"patients" : instance
-	}			
+				"patients" : patients
+	}
+
+	# string = string + "</ul>"
+	# for patient in patients:
+	# 	flag = True 
+	# 	if (len(Verify.objects.filter(uid=patient['id']))):
+	# 		flag = False
+	# 	if flag:
+	# 		instance =  Verify()
+	# 		instance.uid = patient['id']
+	# 		instance.first_name = patient['first_name']
+	# 		instance.last_name = patient['last_name']
+	# 		instance.dob = patient['date_of_birth']
+	# 		if(patient['date_of_birth'] != None): 
+	# 			instance.dob = patient['date_of_birth']
+	# 		else:
+	# 			instance.dob = '1900-1-1'
+	# 		instance.email = patient['email']
+	# 		instance.appointment = patient['date_of_last_appointment']
+	# 		instance.save()
+
+
+	# for patient in patients:
+	# 	instance =  Verify()
+	# 	instance.uid = patient['id']
+	# 	instance.first_name = patient['first_name']
+	# 	instance.last_name = patient['last_name']
+	# 	if(patient['date_of_birth'] != None): 
+	# 		instance.dob = patient['date_of_birth']
+	# 	else:
+	# 		instance.dob = '1900-1-1'
+	# 	instance.email = patient['email']
+	# 	#instace.sex = patient.sex
+	# 	instance.appointment = patient['date_of_last_appointment']
+	# 	instance.save()
+
+	# instance = Verify.objects.all()
+	# context = {
+	#  			"patients" : instance
+	# }			
 	return render(request, "list.html",context)
